@@ -10,11 +10,12 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
 
 function sendMMS() {
-  const mediaUrl =
-    "https://image.useinsider.com/hankypanky/1814/klASG8C4SYSsuGdABZnq1714650588.gif";
+  // Note that the filesize should remain under 600kb.
+  // Larger sizes will be received as a file instead of an image.
+  const mediaUrl = process.env.MEDIA_URL;
   const message = {
     body: "Hello, this is a test MMS!",
-    from: process.env.TWOILIO_MESSAGING_SERVICE_SID,
+    from: process.env.TWILIO_MESSAGING_SERVICE_SID,
     to: process.env.TO_NUMBER,
     mediaUrl: mediaUrl,
   };
