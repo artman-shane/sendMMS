@@ -1,0 +1,2 @@
+# GitIgnore that ignores the .env file
+.env
